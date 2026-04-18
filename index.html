@@ -503,11 +503,11 @@ onAuthStateChanged(auth, (user) => {
       }
     }
   });
-    function openMenu() {
+}
+    window.openMenu = function() {
   document.getElementById("side-menu").style.width = "250px";
 }
-
-function closeMenu() {
+window.closeMenu = function() {
   document.getElementById("side-menu").style.width = "0";
 }
 </script>
