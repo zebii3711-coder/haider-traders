@@ -235,25 +235,23 @@
   </div>
 </div>
   </div>
+  <div id="auth-section">
+  <h3>Login to Submit a Review 👇</h3>
+  <input type="email" id="email" placeholder="Enter Email" required>
+  <input type="password" id="password" placeholder="Enter Password" required>
+  <br><br>
+  <button onclick="signup()">Create New Account</button>
+  <button onclick="login()">Login</button>
+  <button onclick="loginWithGoogle()">Login with Google</button>
+</div>
 
-  <!-- 5. LOGIN BOX BILKUL END PE -->
-  240 <div id="auth-section">
-241   <h3>Login to Submit a Review 👇</h3>
-242   <input type="email" id="email" placeholder="Enter Email" required>
-243   <input type="password" id="password" placeholder="Enter Password" required>
-244   <br><br>
-245   <button onclick="signup()">Create New Account</button>
-246   <button onclick="login()">Login</button>
-247   <button onclick="loginWithGoogle()">Login with Google</button>
-248 </div>  ← auth-section yahan band kar de
+<p id="user-info">Please login to continue</p>
+<button onclick="logout()" id="logout-btn" style="display:none;">Logout</button>
+<hr>
 
-249 <p id="user-info">Please login to continue</p> 
-250 <button onclick="logout()" id="logout-btn" style="display:none;">Logout</button>
-251 <hr>
-
-252 <div id="review-section" style="display:none;">
-    <!-- Review box ka code -->
-253 </div>
+<div id="review-section" style="display:none;">
+  <!-- Review box ka code -->
+</div>
 
   <!-- FOOTER -->
   <div class="footer">
