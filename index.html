@@ -87,20 +87,61 @@
   margin: 15px 0;
   text-align: center;
 }
+    /* Side Menu CSS */
+#side-menu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  background: #2c3e50;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+#side-menu a {
+  padding: 15px 25px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+#side-menu a:hover {
+  background: #34495e;
+}
+#side-menu .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  padding: 8px 15px;
+}
+    
+#side-menu hr {
+  border: 1px solid #7f8c8d;
+  margin: 20px;
+}
+#side-menu p {
+  padding: 15px 25px;
+  color: #bdc3c7;
+  font-size: 14px;
+}
   </style>
 </head>
 <body>
-  <!-- 1. HEADER SABSE UPAR -->
-  <!-- SIDE MENU START -->
-<div id="side-menu" style="height:100%; width:0; position:fixed; top:0; left:0; background:#2c3e50; overflow-x:hidden; transition:0.5s; padding-top:60px; z-index:1000;">
-  <a href="javascript:void(0)" onclick="closeMenu()" style="position:absolute; top:0; right:25px; font-size:36px; color:white; text-decoration:none;">&times;</a>
-  <a href="#" onclick="closeMenu()" style="padding:15px 25px; text-decoration:none; font-size:18px; color:white; display:block;">🏠 Home</a>
-  <a href="#about" onclick="closeMenu()" style="padding:15px 25px; text-decoration:none; font-size:18px; color:white; display:block;">ℹ️ About Us</a>
-  <a href="https://wa.me/923471881297" style="padding:15px 25px; text-decoration:none; font-size:18px; color:white; display:block;">📞 Contact</a>
-  <a href="#cart-section" onclick="closeMenu(); viewCart();" style="padding:15px 25px; text-decoration:none; font-size:18px; color:white; display:block;">🛒 Your Cart</a>
-  <hr style="border:1px solid #7f8c8d; margin:20px;">
-  <p style="padding:15px 25px; color:#bdc3c7; font-size:14px;">Haider Commercial Traders<br>Lahore, Pakistan</p>
+ <!-- SIDE MENU START -->
+<div id="side-menu">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+  <a href="#" onclick="closeMenu()">🏠 Home</a>
+  <a href="#about" onclick="closeMenu()">ℹ️ About</a>
+  <a href="https://wa.me/923471881297" target="_blank">📞 Contact</a>
+  <a href="#cart-section" onclick="closeMenu(); viewCart();">🛒 Cart</a>
+  <hr>
+  <p>Haider Commercial Traders<br>Lahore, Pakistan</p>
 </div>
+<!-- SIDE MENU END -->
 <!-- SIDE MENU END -->
 <div class="header">
   <div style="display:flex; align-items:center; justify-content:space-between; padding:10px;">
