@@ -311,18 +311,20 @@
   }
 
   // 5. CHECK IF USER LOGGED IN OR NOT
-  onAuthStateChanged(auth, (user) => {
-    const userInfo = document.getElementById('user-info');
-    const reviewSection = document.getElementById('review-section');
-    if (user) {
-      userInfo.innerText = "Logged in as: " + user.email;
-      if(reviewSection) reviewSection.style.display = "block";
-    } else {
-      userInfo.innerText = "Please login to continue";
-      if(reviewSection) reviewSection.style.display = "none";
-    }
-  });
-
+ 314 onAuthStateChanged(auth, (user) => {
+315   const userInfo = document.getElementById('user-info');
+316   const reviewSection = document.getElementById('review-section');
+317   const authSection = document.getElementById('auth-section'); // ← YE NAYI LINE
+318   if (user) {
+319     userInfo.innerText = "Logged in as: " + user.email;
+320     if(reviewSection) reviewSection.style.display = "block";
+321     if(authSection) authSection.style.display = "none"; // ← YE NAYI LINE
+322   } else {
+323     userInfo.innerText = "Please login to continue";
+324     if(reviewSection) reviewSection.style.display = "none";
+325     if(authSection) authSection.style.display = "block"; // ← YE NAYI LINE
+326   }
+327 });
   // 6. PRIVACY POLICY CHECKBOX
   const policyCheck = document.getElementById('policy-check');
   if(policyCheck) {
