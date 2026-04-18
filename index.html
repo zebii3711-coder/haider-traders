@@ -91,11 +91,30 @@
 </head>
 <body>
   <!-- 1. HEADER SABSE UPAR -->
-  <div class="header">
-    <h1>Haider Commercial Traders</h1>
-    <p>Your Trusted Partner for Quality Electronics & Home Appliances</p>
-      <p style="margin-top:10px;">Cart: <span id="cart-count">0</span> items | <a href="#cart-section" style="color:white;">View Cart</a></p>
-     </div
+  <!-- SIDE MENU START -->
+<div id="side-menu" style="height:100%; width:0; position:fixed; top:0; left:0; background:#2c3e50; overflow-x:hidden; transition:0.5s; padding-top:60px; z-index:1000;">
+  <a href="javascript:void(0)" onclick="closeMenu()" style="position:absolute; top:0; right:25px; font-size:36px; color:white; text-decoration:none;">&times;</a>
+  <a href="#" onclick="closeMenu()" style="padding:15px 25px; text-decoration:none; font-size:18px; color:white; display:block;">🏠 Home</a>
+  <a href="#about" onclick="closeMenu()" style="padding:15px 25px; text-decoration:none; font-size:18px; color:white; display:block;">ℹ️ About Us</a>
+  <a href="https://wa.me/923471881297" style="padding:15px 25px; text-decoration:none; font-size:18px; color:white; display:block;">📞 Contact</a>
+  <a href="#cart-section" onclick="closeMenu(); viewCart();" style="padding:15px 25px; text-decoration:none; font-size:18px; color:white; display:block;">🛒 Your Cart</a>
+  <hr style="border:1px solid #7f8c8d; margin:20px;">
+  <p style="padding:15px 25px; color:#bdc3c7; font-size:14px;">Haider Commercial Traders<br>Lahore, Pakistan</p>
+</div>
+<!-- SIDE MENU END -->
+<div class="header">
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:10px;">
+    <button onclick="openMenu()" style="background:none; border:none; color:white; font-size:28px; cursor:pointer;">☰</button>
+    <div style="text-align:center;">
+      <h1 style="margin:0; font-size:22px;">Haider Commercial Traders</h1>
+      <p style="margin:5px 0 0 0; font-size:12px;">Quality Electronics & Home Appliances</p>
+    </div>
+    <div style="text-align:right;">
+      <div>Cart: <span id="cart-count">0</span></div>
+      <button onclick="viewCart()" style="background:#e74c3c; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer; margin-top:3px; font-size:12px;">View Cart</button>
+    </div>
+  </div>
+</div>
     <h2 style="text-align: center; margin: 30px 0 20px 0; color: #2c3e50;">Our Products</h2>
     <div class="products">
       <div class="product">
@@ -484,5 +503,12 @@ onAuthStateChanged(auth, (user) => {
       }
     }
   });
+    function openMenu() {
+  document.getElementById("side-menu").style.width = "250px";
+}
+
+function closeMenu() {
+  document.getElementById("side-menu").style.width = "0";
+}
 </script>
    
