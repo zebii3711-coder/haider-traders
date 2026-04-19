@@ -285,25 +285,41 @@
 </div>
 
 <script>
-// Simple Cart System
-let cart = [];
-
+// Cart System using localStorage
 function addToCart(name, price) {
-  cart.push({name, price});
-  updateCart();
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  let existingItem = cart.find(item => item.name === name);
+  if (existingItem) {
+    existingItem.qty += 1;
+  } else {
+    cart.push({name: name, price: parseInt(price), qty: 1});
+  }
+  
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+  showCart();
+  showToast('✅ Cart me add ho gaya!');
 }
 
-function updateCart() {
-  let cartDiv = document.getElementById('cart-items');
-  let totalSpan = document.getElementById('cart-total');
-  if(cart.length === 0) {
-    cartDiv.innerHTML = '<p>Cart khali hai — kuch products add karo!</p>';
-    totalSpan.innerText = '0';
+function checkoutToOrder() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  console.log('Cart check:', cart, 'Length:', cart.length);
+  
+  if (cart.length === 0) {
+    showToast('❌ Cart khali hai!');
     return;
   }
-  let html = '';
-  let total = 0;
-  cart.forEach(item => {
+  
+  let names = cart.map(i => `${i.name} x${i.qty}`).join(', ');
+  let total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  
+  localStorage.removeItem('cart');
+  updateCartCount();
+  showCart();
+  
+  window.location.href = `order.html?name=${encodeURIComponent(names)}&price=${encodeURIComponent(total)}`;
+}
     html += `<p>${item.name} - Rs ${item.price}</p>`;
     total += parseInt(item.price);
   });
@@ -521,19 +537,7 @@ function updateCart() {
     document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
   }
 
-  window.checkout = function() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cart.length === 0) { showToast('❌ Cart khali hai!'); return; }
-    let message = 'Assalamualaikum! Mujhe ye products order karne hain:\n\n';
-    let total = 0;
-    cart.forEach(item => {
-      message += `${item.name} x${item.qty} = Rs ${item.price * item.qty}\n`;
-      total += item.price * item.qty;
-    });
-    message += `\nTotal: Rs ${total.toLocaleString()}`;
-    window.open(`https://wa.me/923471881297?text=${encodeURIComponent(message)}`, '_blank');
-  }
-
+  
   window.addToCart = addToCart;
   window.removeFromCart = removeFromCart;
   window.deleteItem = deleteItem;
