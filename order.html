@@ -237,7 +237,7 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
       trx: document.getElementById('f-trx').value,
       screenshot: screenshotBase64 || ''
     };
-   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxAHCjbqZxE8rgrdl32EW6X15_MRegYZMw0wB-r0NoRkhDwRwzy-ORxVwy4Z7tA08v3SA/exec
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxAHCjbqZxE8rgrdl32EW6X15_MRegYZMw0wB-r0NoRkhDwRwzy-ORxVwy4Z7tA08v3SA/exec';
     fetch(SCRIPT_URL, {
       method: 'POST',
       body: JSON.stringify(payload)
