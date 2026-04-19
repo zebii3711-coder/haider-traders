@@ -285,42 +285,64 @@
 </div>
 
 <script>
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let count = cart.reduce((sum, item) => sum + item.qty, 0);
+  let cartCountElement = document.getElementById('cart-count');
+  if (cartCountElement) {
+    cartCountElement.innerText = count;
+  }
+}
+
+function showToast(message) {
+  alert(message);
+}
+
 // Cart System using localStorage
 function addToCart(name, price) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
   let existingItem = cart.find(item => item.name === name);
   if (existingItem) {
     existingItem.qty += 1;
   } else {
     cart.push({name: name, price: parseInt(price), qty: 1});
   }
-  
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
   showCart();
   showToast('✅ Cart me add ho gaya!');
 }
 
+function showCart() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let cartDiv = document.getElementById('cart-items');
+  let totalSpan = document.getElementById('cart-total');
+  if (!cartDiv || !totalSpan) return;
+  
+  let html = '';
+  let total = 0;
+  cart.forEach(item => {
+    html += `<p>${item.name} x${item.qty} - Rs ${item.price * item.qty}</p>`;
+    total += item.price * item.qty;
+  });
+  cartDiv.innerHTML = html || '<p>Cart khali hai</p>';
+  totalSpan.innerText = total;
+}
+
 function checkoutToOrder() {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   console.log('Cart check:', cart, 'Length:', cart.length);
-  
   if (cart.length === 0) {
     showToast('❌ Cart khali hai!');
     return;
   }
-  
   let names = cart.map(i => `${i.name} x${i.qty}`).join(', ');
   let total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-  
   localStorage.removeItem('cart');
   updateCartCount();
   showCart();
-  
   window.location.href = `order.html?name=${encodeURIComponent(names)}&price=${encodeURIComponent(total)}`;
 }
- 
 </script>
 <!-- ABOUT / SERVICES / CONTACT -->
 <div style="padding: 0 20px;" id="about">
