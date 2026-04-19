@@ -311,7 +311,9 @@ function updateCart() {
   totalSpan.innerText = total;
 }
 
-function checkoutToOrder() {
+
+ function checkoutToOrder() {
+  console.log('Cart check:', cart, 'Length:', cart.length); // ye add kar
   if(cart.length === 0) {
     alert('Pehle cart me product add karo');
     return;
@@ -319,7 +321,8 @@ function checkoutToOrder() {
   let names = cart.map(i => i.name).join(', ');
   let total = cart.reduce((sum, item) => sum + parseInt(item.price), 0);
   window.location.href = `order.html?name=${encodeURIComponent(names)}&price=${encodeURIComponent(total)}`;
-}
+} 
+
 </script>
 <!-- ABOUT / SERVICES / CONTACT -->
 <div style="padding: 0 20px;" id="about">
