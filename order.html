@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Now - Haider Commercial Traders</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; padding: 15px; }
+    .container { max-width: 500px; margin: 0 auto; }
+    .box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; display: none; }
+    .box.active { display: block; }
+    .box img { width: 100%; max-width: 250px; border-radius: 8px; display: block; margin: 0 auto 15px; }
+    h1 { font-size: 22px; color: #2c3e50; margin-bottom: 10px; text-align: center; }
+    h2 { font-size: 18px; color: #2c3e50; margin: 15px 0 10px; }
+    .price { font-size: 24px; font-weight: 700; color: #27ae60; text-align: center; margin: 10px 0; }
+    .btn { background: linear-gradient(135deg, #25D366, #1da851); color: white; padding: 14px 25px; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; width: 100%; font-weight: 600; }
+    .btn-blue { background: linear-gradient(135deg, #3498db, #2980b9); }
+    input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1.5px solid #ddd; border-radius: 8px; font-size: 15px; }
+    label { font-weight: 600; color: #2c3e50; display: block; margin-top: 12px; font-size: 14px; }
+    .back { display: inline-block; margin-top: 15px; color: #3498db; text-decoration: none; text-align: center; width: 100%; }
+    .bank-box { background: #e8f5e9; padding: 15px; border-radius: 8px; border-left: 4px solid #27ae60; margin: 15px 0; font-size: 14px; }
+    .bank-box p { margin: 5px 0; }
+    .step { text-align: center; color: #7f8c8d; font-size: 13px; margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- STEP 1: PRODUCT DETAILS + CUSTOMER FORM -->
+    <div class="box active" id="step1">
+      <div class="step">Step 1 of 3: Order Details</div>
+      <h1 id="p-name">Product Loading...</h1>
+      <img id="p-img" src="" alt="Product">
+      <div class="price" id="p-price">Rs 0</div>
+      
+      <form id="customerForm">
+        <h2>Enter Your Details</h2>
+        <input type="hidden" id="form-product" name="Product">
+        <input type="hidden" id="form-price" name="Price">
+        
+        <label>Full Name:</label>
+        <input type="text" name="Name" required>
+        
+        <label>WhatsApp Number:</label>
+        <input type="tel" name="Phone" placeholder="03XX-XXXXXXX" required>
+        
+        <label>Quantity:</label>
+        <select name="Quantity" required>
+          <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+        </select>
+        
+        <label>Color/Variant If Any:</label>
+        <input type="text" name="Color" placeholder="Black, Silver, etc">
+        
+        <label>Complete Address:</label>
+        <textarea name="Address" rows="3" required placeholder="House#, Street, City"></textarea>
+        
+        <button type="submit" class="btn">Next: Payment Details →</button>
+      </form>
+      <a href="index.html" class="back">← Cancel & Back to Shop</a>
+    </div>
+
+    <!-- STEP 2: PAYMENT FORM -->
+    <div class="box" id="step2">
+      <div class="step">Step 2 of 3: Payment Confirmation</div>
+      <h1>Make Payment</h1>
+      <p style="text-align:center; color:#555; margin-bottom:15px;">Send payment to confirm your order</p>
+      
+      <div class="bank-box">
+        <h3>Payment Details:</h3>
+        <p><strong>Easypaisa Account:</strong></p>
+        <p><strong>Number:</strong> 03471881297</p>
+        <p><strong>Name:</strong> Ali Haider</p>
+        <br>
+        <p style="color:#c0392b; font-weight:600;">⚠️ Please enter Transaction ID below after payment</p>
+      </div>
+
+      <form action="https://formsubmit.co/haidercommercialtraders@gmail.com" method="POST">
+        <h2>Submit After Payment</h2>
+        
+        <input type="hidden" name="Product_Details" id="p-details-final">
+        <input type="hidden" name="Customer_Details" id="c-details-final">
+        
+        <label>Your Name:</label>
+        <input type="text" name="Customer_Name" id="confirm-name" required>
+        
+        <label>Your WhatsApp Number:</label>
+        <input type="tel" name="Phone" id="confirm-phone" required>
+        
+        <label>Account Paid To:</label>
+        <input type="text" name="Account_Number" value="03471881297 - Ali Haider (Easypaisa)" readonly>
+        
+        <label>Transaction ID / TRX ID:</label>
+        <input type="text" name="Transaction_ID" placeholder="Enter TRX ID here" required>
+        
+        <label>Amount Sent:</label>
+        <input type="number" name="Amount_Sent" id="confirm-amount" placeholder="Rs" required>
+        
+        <input type="hidden" name="_next" value="order.html?success=true">
+        <input type="hidden" name="_subject" value="Payment Received - New Order - Haider Commercial Traders">
+        <input type="hidden" name="_captcha" value="false">
+        
+        <button type="submit" class="btn">Submit Payment Proof</button>
+      </form>
+      <a href="#" onclick="showStep(1)" class="back">← Back to Details</a>
+    </div>
+
+    <!-- STEP 3: THANK YOU -->
+    <div class="box" id="step3">
+      <div class="step">Step 3 of 3: Order Confirmed</div>
+      <h1 style="text-align:center;">Payment Confirmed! ✅</h1>
+      <h2 style="text-align:center;">Thank You!</h2>
+      <p style="text-align:center; margin:20px 0;">We have received your order and payment. Haider Commercial Traders team will contact you via WhatsApp <strong>within 2 hours</strong> to dispatch your order.</p>
+      <p style="text-align:center;"><strong>Payment Status: Received</strong></p>
+      <a href="index.html" class="btn btn-blue">Back to Shop</a>
+      <p style="text-align:center; margin-top:30px; font-size:14px;">Need Help? WhatsApp: <strong>03471881297</strong></p>
+    </div>
+
+  </div>
+
+<script>
+// 1. Get product details from URL
+const params = new URLSearchParams(window.location.search);
+const name = params.get('name') || 'Product';
+const price = params.get('price') || '0';
+const img = params.get('img') || '';
+const success = params.get('success');
+
+// 2. If success=true show Thank You page
+if(success === 'true') {
+  showStep(3);
+} else {
+  document.getElementById('p-name').innerText = name;
+  document.getElementById('p-price').innerText = 'Rs ' + Number(price).toLocaleString();
+  document.getElementById('p-img').src = img;
+  document.getElementById('form-product').value = name;
+  document.getElementById('form-price').value = price;
+  document.title = name + ' - Order Now';
+  showStep(1);
+}
+
+// 3. Function to show steps
+function showStep(num) {
+  document.getElementById('step1').classList.remove('active');
+  document.getElementById('step2').classList.remove('active');
+  document.getElementById('step3').classList.remove('active');
+  document.getElementById('step'+num).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// 4. Step 1 form submit -> Go to Step 2
+document.getElementById('customerForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  let productDetails = `Product: ${formData.get('Product')}, Price: Rs ${formData.get('Price')}, Qty: ${formData.get('Quantity')}, Color: ${formData.get('Color')}`;
+  let customerDetails = `Name: ${formData.get('Name')}, Phone: ${formData.get('Phone')}, Address: ${formData.get('Address')}`;
+  
+  document.getElementById('p-details-final').value = productDetails;
+  document.getElementById('c-details-final').value = customerDetails;
+  document.getElementById('confirm-name').value = formData.get('Name');
+  document.getElementById('confirm-phone').value = formData.get('Phone');
+  document.getElementById('confirm-amount').value = formData.get('Price') * formData.get('Quantity');
+  
+  showStep(2);
+});
+</script>
+</body>
+</html>
