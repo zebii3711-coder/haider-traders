@@ -1,232 +1,265 @@
-function doPost(e) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  const data = JSON.parse(e.postData.contents);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Now - Haider Commercial Traders</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; padding: 15px; }
+  .container { max-width: 500px; margin: 0 auto; }
+  .box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; display: none; }
+  .box.active { display: block; }
+  .box img { width: 100%; max-width: 250px; border-radius: 8px; display: block; margin: 0 auto 15px; }
+    h1 { font-size: 22px; color: #2c3e50; margin-bottom: 10px; text-align: center; }
+    h2 { font-size: 18px; color: #2c3e50; margin: 15px 0 10px; }
+  .price { font-size: 24px; font-weight: 700; color: #27ae60; text-align: center; margin: 10px 0; }
+  .btn { background: linear-gradient(135deg, #25D366, #1da851); color: white; padding: 14px 25px; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; width: 100%; font-weight: 600; }
+  .btn-blue { background: linear-gradient(135deg, #3498db, #2980b9); }
+    input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1.5px solid #ddd; border-radius: 8px; font-size: 15px; }
+    label { font-weight: 600; color: #2c3e50; display: block; margin-top: 12px; font-size: 14px; }
+  .back { display: inline-block; margin-top: 15px; color: #3498db; text-decoration: none; text-align: center; width: 100%; }
+  .bank-box { background: #e8f5e9; padding: 15px; border-radius: 8px; border-left: 4px solid #27ae60; margin: 15px 0; font-size: 14px; }
+  .bank-box p { margin: 5px 0; }
+  .step { text-align: center; color: #7f8c8d; font-size: 13px; margin-bottom: 15px; }
+  .countdown { text-align: center; color: #e74c3c; font-weight: 600; margin-top: 15px; font-size: 14px; }
+  .note { background: #fff3cd; padding: 12px; border-radius: 8px; border-left: 4px solid #ffc107; margin: 15px 0; font-size: 13px; color: #856404; }
+    #preview { max-width: 100%; margin-top: 10px; border-radius: 8px; display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
 
-  let screenshotUrl = '';
+    <!-- STEP 1: PRODUCT DETAILS + CUSTOMER FORM -->
+    <div class="box active" id="step1">
+      <div class="step">Step 1 of 3: Order Details</div>
+      <h1 id="p-name">Product Loading...</h1>
+      <img id="p-img" src="" alt="Product">
+      <div class="price" id="p-price">Rs 0</div>
 
-  // Upload screenshot to Drive if provided
-  if (data.screenshot) {
-    const folder = DriveApp.getFolderById('root');
-    const blob = Utilities.newBlob(Utilities.base64Decode(data.screenshot.split(',')[1]), 'image/jpeg', 'Order_' + data.trx + '_' + new Date().getTime() + '.jpg');
-    const file = folder.createFile(blob);
-    file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-    screenshotUrl = file.getUrl();
-  }
+      <form id="customerForm">
+        <h2>Enter Your Details</h2>
+        <input type="hidden" id="form-product" name="Product">
+        <input type="hidden" id="form-price" name="Price">
 
-  // Add row to Sheet - 13 columns total
-  sheet.appendRow([
-    new Date(),
-    data.product,
-    data.price,
-    data.qty,
-    data.color,
-    data.name,
-    data.phone,
-    data.email,
-    data.address,
-    data.trx,
-    screenshotUrl,
-    'Pending', // Status column L
-    '' // Reminder_Sent column M
-  ]);
+        <label>Full Name:</label>
+        <input type="text" name="Name" required>
 
-  // Email to Customer: Order Received
-  const customerSubject = 'Order Received - Haider Commercial Traders';
-  const customerBody = `
-Hi ${data.name},
+        <label>WhatsApp Number:</label>
+        <input type="tel" name="Phone" placeholder="03XX-XXXXXXX" required>
 
-We have received your order details for: ${data.product}
+        <label>Email Address:</label>
+        <input type="email" name="Email" placeholder="your@email.com" required>
 
-Order Details:
-Product: ${data.product}
-Quantity: ${data.qty}
-Amount: Rs ${data.price * data.qty}
-Transaction ID: ${data.trx}
-Screenshot: ${screenshotUrl? 'Uploaded' : 'Not provided'}
+        <label>Quantity:</label>
+        <select name="Quantity" required>
+          <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+        </select>
 
-Our team is now verifying your payment with Easypaisa.
-You will receive a confirmation email within 30 minutes once verified.
+        <label>Color/Variant If Any:</label>
+        <input type="text" name="Color" placeholder="Black, Silver, etc">
 
-If Transaction ID is incorrect, we will contact you on WhatsApp: ${data.phone}
+        <label>Complete Address:</label>
+        <textarea name="Address" rows="3" required placeholder="House#, Street, City"></textarea>
 
-Thank you for shopping with Haider Commercial Traders!
+        <button type="submit" class="btn">Next: Payment Details →</button>
+      </form>
+      <a href="index.html" class="back">← Cancel & Back to Shop</a>
+    </div>
 
-Need help? WhatsApp: 03471881297
-  `;
-  MailApp.sendEmail(data.email, customerSubject, customerBody);
+    <!-- STEP 2: PAYMENT FORM -->
+    <div class="box" id="step2">
+      <div class="step">Step 2 of 3: Payment Confirmation</div>
+      <h1>Make Payment</h1>
+      <p style="text-align:center; color:#555; margin-bottom:15px;">Send payment to confirm your order</p>
 
-  // Email to Admin
-  const adminSubject = 'New Order - Verify Payment - ' + data.name;
-  const adminBody = `
-New order received. Verify Transaction ID now.
+      <div class="bank-box">
+        <h3>Payment Details:</h3>
+        <p><strong>Easypaisa Account:</strong></p>
+        <p><strong>Number:</strong> 03471881297</p>
+        <p><strong>Name:</strong> Ali Haider</p>
+        <br>
+        <p style="color:#c0392b; font-weight:600;">⚠️ Please enter correct Transaction ID below after payment</p>
+      </div>
 
-Product: ${data.product}
-Amount: Rs ${data.price * data.qty}
-Customer: ${data.name}
-Phone: ${data.phone}
-Email: ${data.email}
-TRX ID: ${data.trx}
-Screenshot: ${screenshotUrl || 'Not uploaded'}
-Address: ${data.address}
+      <div class="note">
+        <strong>Important:</strong> Upload screenshot of payment for faster verification. If Transaction ID is incorrect, your order will be cancelled.
+      </div>
 
-Check Easypaisa app and update Status column in Sheet to Approved or Rejected.
+      <form id="paymentForm">
+        <h2>Submit After Payment</h2>
 
-Sheet Link: ${SpreadsheetApp.getActiveSpreadsheet().getUrl()}
-  `;
-  MailApp.sendEmail('zebii3711@gmail.com', adminSubject, adminBody);
+        <input type="hidden" id="f-product">
+        <input type="hidden" id="f-price">
+        <input type="hidden" id="f-qty">
+        <input type="hidden" id="f-color">
+        <input type="hidden" id="f-name">
+        <input type="hidden" id="f-phone">
+        <input type="hidden" id="f-email">
+        <input type="hidden" id="f-address">
 
-  return ContentService.createTextOutput(JSON.stringify({result: 'success'})).setMimeType(ContentService.MimeType.JSON);
+        <label>Your Name:</label>
+        <input type="text" id="confirm-name" readonly>
+
+        <label>Your WhatsApp Number:</label>
+        <input type="tel" id="confirm-phone" readonly>
+
+        <label>Account Paid To:</label>
+        <input type="text" value="03471881297 - Ali Haider (Easypaisa)" readonly>
+
+        <label>Transaction ID / TRX ID:</label>
+        <input type="text" id="f-trx" placeholder="Enter correct TRX ID here" required>
+
+        <label>Amount Sent:</label>
+        <input type="number" id="confirm-amount" placeholder="Rs" required>
+
+        <label>Payment Screenshot (Optional but Recommended):</label>
+        <input type="file" id="screenshot" accept="image/*">
+        <img id="preview" alt="Screenshot Preview">
+
+        <button type="submit" class="btn">Submit Payment Proof</button>
+      </form>
+      <a href="#" onclick="showStep(1)" class="back">← Back to Details</a>
+    </div>
+
+    <!-- STEP 3: THANK YOU -->
+    <div class="box" id="step3">
+      <div class="step">Step 3 of 3: Order Submitted</div>
+      <h1 style="text-align:center; color:#27ae60;">Payment Successful! ✅</h1>
+      <h2 style="text-align:center;">Thank You!</h2>
+      <p style="text-align:center; margin:20px 0;">We have received your order details. <strong>Please check your email for confirmation.</strong></p>
+      <p style="text-align:center; margin:15px 0;">Our team will verify your Transaction ID with Easypaisa and confirm your order within 30 minutes.</p>
+      <p style="text-align:center;"><strong>Payment Status: Pending Verification</strong></p>
+      <div class="countdown">Redirecting to home page in <span id="timer">15</span> seconds...</div>
+      <a href="index.html" class="btn btn-blue">Back to Shop Now</a>
+      <p style="text-align:center; margin-top:30px; font-size:14px;">Need Help? WhatsApp: <strong>03471881297</strong></p>
+    </div>
+
+  </div>
+
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxAHCjbqZxE8rgrdl32EW6X15_MRegYZMw0wB-r0NoRkhDwRwzy-ORxVwy4Z7tA08v3SA/exec';
+
+// 1. Get product details from URL
+const params = new URLSearchParams(window.location.search);
+const name = params.get('name') || 'Product';
+const price = params.get('price') || '0';
+const img = params.get('img') || '';
+const success = params.get('success');
+
+// 2. If success=true show Thank You page + start 15 SECOND timer
+if(success === 'true') {
+  showStep(3);
+  let timeLeft = 15;
+  let timerEl = document.getElementById('timer');
+  let countdown = setInterval(function() {
+    timeLeft--;
+    timerEl.textContent = timeLeft;
+    if(timeLeft <= 0) {
+      clearInterval(countdown);
+      window.location.href = 'index.html';
+    }
+  }, 1000);
+} else {
+  document.getElementById('p-name').innerText = name;
+  document.getElementById('p-price').innerText = 'Rs ' + Number(price).toLocaleString();
+  document.getElementById('p-img').src = img;
+  document.getElementById('form-product').value = name;
+  document.getElementById('form-price').value = price;
+  document.title = name + ' - Order Now';
+  showStep(1);
 }
 
-// Trigger when Status is changed to Approved or Rejected
-function onEdit(e) {
-  const sheet = e.source.getActiveSheet();
-  const range = e.range;
-
-  // Status column is 12, Reminder_Sent is 13
-  if (range.getColumn() == 12 && range.getRow() > 1) {
-    const row = range.getRow();
-    const status = range.getValue();
-    const email = sheet.getRange(row, 8).getValue();
-    const name = sheet.getRange(row, 6).getValue();
-    const product = sheet.getRange(row, 2).getValue();
-    const phone = sheet.getRange(row, 7).getValue();
-
-    if (status == 'Approved') {
-      MailApp.sendEmail(email, 'Payment Successful - Order Confirmed ✅', `
-Hi ${name},
-
-Great news! Your payment has been verified successfully.
-
-Order: ${product}
-Status: CONFIRMED ✅
-
-We are now preparing your order for dispatch. You will receive tracking details on WhatsApp within 2 hours.
-
-Thank you for shopping with Haider Commercial Traders!
-WhatsApp: 03471881297
-      `);
-    }
-
-    if (status == 'Rejected') {
-      // First reminder after 5 minutes
-      ScriptApp.newTrigger('sendRejectEmail')
-    .timeBased()
-    .after(5 * 60 * 1000) // 5 minutes
-    .create();
-
-      // Store data for emails
-      PropertiesService.getScriptProperties().setProperty('rejectEmail_' + row, email);
-      PropertiesService.getScriptProperties().setProperty('rejectName_' + row, name);
-      PropertiesService.getScriptProperties().setProperty('rejectProduct_' + row, product);
-      PropertiesService.getScriptProperties().setProperty('rejectPhone_' + row, phone);
-      PropertiesService.getScriptProperties().setProperty('rejectRow_' + row, row);
-    }
-  }
+// 3. Function to show steps
+function showStep(num) {
+  document.getElementById('step1').classList.remove('active');
+  document.getElementById('step2').classList.remove('active');
+  document.getElementById('step3').classList.remove('active');
+  document.getElementById('step'+num).classList.add('active');
+  window.scrollTo(0,0);
 }
 
-// First rejection email - 5 minutes after
-function sendRejectEmail() {
-  const props = PropertiesService.getScriptProperties();
-  const allProps = props.getProperties();
-
-  for (let key in allProps) {
-    if (key.startsWith('rejectEmail_')) {
-      const row = key.split('_')[1];
-      const email = allProps['rejectEmail_' + row];
-      const name = allProps['rejectName_' + row];
-      const product = allProps['rejectProduct_' + row];
-      const phone = allProps['rejectPhone_' + row];
-
-      if (email) {
-        MailApp.sendEmail(email, 'Payment Failed - Action Required ❌', `
-Hi ${name},
-
-We could not verify your payment for: ${product}
-
-Reason: Transaction ID not found or amount mismatch.
-
-Please verify your Transaction ID and contact us on WhatsApp: 03471881297
-We will help you complete your order.
-
-If we do not hear from you, your order will be cancelled automatically.
-
-Haider Commercial Traders
-        `);
-
-        // Mark first reminder sent and schedule second reminder
-        const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-        sheet.getRange(row, 13).setValue('1st Reminder Sent');
-
-        // Second reminder after 30 minutes total
-        ScriptApp.newTrigger('sendSecondRejectEmail')
-      .timeBased()
-      .after(25 * 60 * 1000) // 25 more minutes = 30 total
-      .create();
-
-        props.deleteProperty('rejectEmail_' + row);
-        // Keep other props for second email
-      }
+// 4. Screenshot preview
+document.getElementById('screenshot').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const preview = document.getElementById('preview');
+      preview.src = e.target.result;
+      preview.style.display = 'block';
     }
+    reader.readAsDataURL(file);
+  }
+});
+
+// 5. Step 1 form submit -> Go to Step 2
+document.getElementById('customerForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+  document.getElementById('f-product').value = formData.get('Product');
+  document.getElementById('f-price').value = formData.get('Price');
+  document.getElementById('f-qty').value = formData.get('Quantity');
+  document.getElementById('f-color').value = formData.get('Color');
+  document.getElementById('f-name').value = formData.get('Name');
+  document.getElementById('f-phone').value = formData.get('Phone');
+  document.getElementById('f-email').value = formData.get('Email');
+  document.getElementById('f-address').value = formData.get('Address');
+
+  document.getElementById('confirm-name').value = formData.get('Name');
+  document.getElementById('confirm-phone').value = formData.get('Phone');
+  document.getElementById('confirm-amount').value = formData.get('Price') * formData.get('Quantity');
+
+  showStep(2);
+});
+
+// 6. Step 2 form submit -> Send to Google Sheet with Screenshot
+document.getElementById('paymentForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const btn = e.target.querySelector('button');
+  btn.textContent = 'Uploading...';
+  btn.disabled = true;
+
+  const screenshotFile = document.getElementById('screenshot').files[0];
+
+  function sendData(screenshotBase64) {
+    const payload = {
+      product: document.getElementById('f-product').value,
+      price: document.getElementById('f-price').value,
+      qty: document.getElementById('f-qty').value,
+      color: document.getElementById('f-color').value,
+      name: document.getElementById('f-name').value,
+      phone: document.getElementById('f-phone').value,
+      email: document.getElementById('f-email').value,
+      address: document.getElementById('f-address').value,
+      trx: document.getElementById('f-trx').value,
+      screenshot: screenshotBase64 || ''
+    };
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    }).then(res => {
+      window.location.href = 'order.html?success=true';
+    }).catch(err => {
+      alert('Error submitting order. Please try again or contact WhatsApp: 03471881297');
+      btn.textContent = 'Submit Payment Proof';
+      btn.disabled = false;
+    });
   }
 
-  // Delete this trigger
-  const triggers = ScriptApp.getProjectTriggers();
-  for (let i = 0; i < triggers.length; i++) {
-    if (triggers[i].getHandlerFunction() == 'sendRejectEmail') {
-      ScriptApp.deleteTrigger(triggers[i]);
+  if (screenshotFile) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      sendData(e.target.result);
     }
+    reader.readAsDataURL(screenshotFile);
+  } else {
+    sendData('');
   }
-}
-
-// Second rejection email - 30 minutes after rejection
-function sendSecondRejectEmail() {
-  const props = PropertiesService.getScriptProperties();
-  const allProps = props.getProperties();
-
-  for (let key in allProps) {
-    if (key.startsWith('rejectName_')) {
-      const row = key.split('_')[1];
-      const email = allProps['rejectEmail_' + row];
-      const name = allProps['rejectName_' + row];
-      const product = allProps['rejectProduct_' + row];
-      const phone = allProps['rejectPhone_' + row];
-
-      if (email) {
-        MailApp.sendEmail(email, 'Order Cancelled - Payment Not Verified', `
-Hi ${name},
-
-Your order for: ${product} has been cancelled.
-
-Reason: We did not receive valid payment verification within 30 minutes.
-
-If you believe this is an error, please contact us immediately on WhatsApp: 03471881297 with your payment proof.
-
-You can place a new order anytime at haider-traders.com
-
-Haider Commercial Traders
-        `);
-
-        // Mark final status
-        const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-        sheet.getRange(row, 13).setValue('Cancelled - No Response');
-        sheet.getRange(row, 12).setValue('Cancelled');
-
-        // Clean up properties
-        props.deleteProperty('rejectEmail_' + row);
-        props.deleteProperty('rejectName_' + row);
-        props.deleteProperty('rejectProduct_' + row);
-        props.deleteProperty('rejectPhone_' + row);
-        props.deleteProperty('rejectRow_' + row);
-      }
-    }
-  }
-
-  // Delete this trigger
-  const triggers = ScriptApp.getProjectTriggers();
-  for (let i = 0; i < triggers.length; i++) {
-    if (triggers[i].getHandlerFunction() == 'sendSecondRejectEmail') {
-      ScriptApp.deleteTrigger(triggers[i]);
-    }
-  }
-}
+});
+</script>
+</body>
+</html>
