@@ -317,8 +317,8 @@ function checkoutToOrder() {
     return;
   }
   let names = cart.map(i => i.name).join(', ');
-  let prices = cart.map(i => i.price).join(', ');
-  window.location.href = `order.html?name=${encodeURIComponent(names)}&price=${encodeURIComponent(prices)}`;
+  let total = cart.reduce((sum, item) => sum + parseInt(item.price), 0);
+  window.location.href = `order.html?name=${encodeURIComponent(names)}&price=${encodeURIComponent(total)}`;
 }
 </script>
 <!-- ABOUT / SERVICES / CONTACT -->
