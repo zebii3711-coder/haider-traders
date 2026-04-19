@@ -3,19 +3,442 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Haider Traders</title>
+  <meta name="description" content="About Haider Commercial Traders - Your trusted partner for premium home appliances and furniture in Pakistan.">
+  <title>About Us | Haider Commercial Traders</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+  <style>
+    :root {
+      --primary: #27ae60;
+      --primary-dark: #1e8449;
+      --secondary: #2c3e50;
+      --bg-light: #f8f9fa;
+      --text: #2d3436;
+      --text-light: #636e72;
+      --border: #dfe6e9;
+      --shadow: 0 2px 15px rgba(0,0,0,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: var(--text); 
+      line-height: 1.8;
+      padding: 20px 10px;
+      min-height: 100vh;
+    }
+    
+    .wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .header-bar {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 12px 12px 0 0;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    
+    .logo span { color: var(--primary); }
+    
+    .back-btn {
+      background: var(--primary);
+      color: white;
+      padding: 10px 22px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+    }
+    
+    .container { 
+      background: white; 
+      padding: 50px 40px; 
+      border-radius: 0 0 12px 12px;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+    }
+    
+    .hero-section {
+      text-align: center;
+      padding: 30px 0 50px 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 50px;
+    }
+    
+    .hero-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+    
+    h1 { 
+      color: var(--secondary); 
+      font-size: 38px; 
+      margin-bottom: 15px; 
+      font-weight: 700;
+    }
+    
+    .tagline {
+      font-size: 18px;
+      color: var(--text-light);
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+    
+    .divider {
+      height: 4px;
+      width: 80px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 2px;
+      margin: 0 auto 25px auto;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+    
+    .stat-card {
+      background: var(--bg-light);
+      padding: 30px 20px;
+      border-radius: 12px;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+    }
+    
+    .stat-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(39, 174, 96, 0.15);
+    }
+    
+    .stat-number {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 8px;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-light);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    h2 { 
+      color: var(--secondary); 
+      font-size: 28px; 
+      margin: 50px 0 25px 0; 
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+    
+    h3 {
+      color: var(--secondary);
+      font-size: 20px;
+      margin: 30px 0 15px 0;
+      font-weight: 600;
+    }
+    
+    p { 
+      margin: 15px 0; 
+      font-size: 15.5px; 
+      color: var(--text-light);
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+    
+    .feature-card {
+      background: var(--bg-light);
+      padding: 30px 25px;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .feature-card h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+    
+    .feature-card p {
+      font-size: 14px;
+      margin: 8px 0;
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+      margin: 30px 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+      border-radius: 2px;
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+      padding-left: 20px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -36px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--primary);
+    }
+    
+    .timeline-year {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    
+    .cta-box {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 50px 0 30px 0;
+    }
+    
+    .cta-box h3 {
+      color: white;
+      margin: 0 0 15px 0;
+      font-size: 26px;
+    }
+    
+    .cta-box p {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+    
+    .cta-btn {
+      background: white;
+      color: var(--primary);
+      padding: 14px 35px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+    
+    .cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    
+    .footer-note {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--text-light);
+      font-size: 14px;
+      border-top: 2px solid var(--border);
+      margin-top: 40px;
+    }
+    
+    @media (max-width: 768px) {
+      .container { padding: 30px 20px; }
+      h1 { font-size: 30px; }
+      h2 { font-size: 24px; }
+      .header-bar { padding: 15px 20px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-icon { font-size: 60px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>About Haider Traders</h1>
-  <p>Haider Traders is a commercial trading company based in Main Gulberg, Lahore, Pakistan.</p>
-  <h2>What We Do</h2>
-  <p>We specialize in high-quality commercial and professional-grade products including laptops, musical instruments like guitars, and other professional equipment for businesses and individuals.</p>
-  <h2>Our Mission</h2>
-  <p>To deliver trusted, authentic products at competitive prices with excellent customer service across Pakistan.</p>
-  <h2>Contact</h2>
-  <p>Email: info@haider-traders.com<br>
-  Location: Main Gulberg, Lahore, Pakistan<br>
-  Website: haider-traders.com</p>
-  <p><a href="index.html">← Back to Home</a></p>
+  <div class="wrapper">
+    <div class="header-bar">
+      <div class="logo">Haider <span>Commercial</span> Traders</div>
+      <a href="index.html" class="back-btn">← Back to Store</a>
+    </div>
+    
+    <div class="container">
+      <div class="hero-section">
+        <div class="hero-icon">🏠</div>
+        <h1>About Haider Commercial Traders</h1>
+        <div class="divider"></div>
+        <p class="tagline">Your Trusted Partner for Premium Home Appliances Since 2020</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">5000+</span>
+          <span class="stat-label">Happy Customers</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Products Delivered</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Authentic Products</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">4.8★</span>
+          <span class="stat-label">Customer Rating</span>
+        </div>
+      </div>
+
+      <h2>Our Story</h2>
+      <p>Haider Commercial Traders was founded in 2020 with a simple mission: to make premium home appliances and furniture accessible to every household in Pakistan. Based in <strong>Dharma, Depalpur, Punjab</strong>, we started as a small local business with a big dream.</p>
+      
+      <p>What began as a passion project has grown into one of the region's most trusted online stores for home essentials. We believe that quality home appliances shouldn't be a luxury—they should be available to everyone at fair prices with honest service.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2020</div>
+          <h3>The Beginning</h3>
+          <p>Started with a small showroom in Depalpur, focusing on quality over quantity. Our first 100 customers became our brand ambassadors.</p>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2022</div>
+          <h3>Going Digital</h3>
+          <p>Launched our online platform to serve customers across Punjab. Introduced WhatsApp ordering for customer convenience.</p>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <h3>Expansion</h3>
+          <p>Expanded product range to 500+ items. Partnered with top courier services for nationwide delivery.</p>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2026</div>
+          <h3>Today</h3>
+          <p>Serving 5000+ satisfied customers with 4.8★ rating. Continuing to grow while maintaining our commitment to quality and service.</p>
+        </div>
+      </div>
+
+      <h2>Why Choose Us?</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-icon">✅</span>
+          <h3>100% Genuine Products</h3>
+          <p>Every product is sourced directly from authorized dealers. Full warranty coverage and authenticity guaranteed.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">🚚</span>
+          <h3>Fast & Safe Delivery</h3>
+          <p>Cash on Delivery available across Pakistan. Professional packaging ensures your products arrive safely.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">💰</span>
+          <h3>Best Price Guarantee</h3>
+          <p>Competitive pricing with no hidden charges. Found a better price? We'll match it.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">🛡️</span>
+          <h3>Easy Returns</h3>
+          <p>7-day return policy on all products. Your satisfaction is our priority, no questions asked.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">📱</span>
+          <h3>24/7 Support</h3>
+          <p>WhatsApp support available for all queries. We respond within hours, not days.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">⭐</span>
+          <h3>Verified Reviews</h3>
+          <p>All reviews are from real customers who purchased. Read honest feedback before you buy.</p>
+        </div>
+      </div>
+
+      <h2>Our Mission & Vision</h2>
+      
+      <h3>🎯 Our Mission</h3>
+      <p>To provide every Pakistani household access to high-quality home appliances and furniture at affordable prices, backed by exceptional customer service and transparent business practices.</p>
+      
+      <h3>🔭 Our Vision</h3>
+      <p>To become Pakistan's most trusted online destination for home essentials, known for authenticity, reliability, and putting customers first—always.</p>
+
+      <h2>Our Values</h2>
+      <p><strong>Honesty:</strong> No fake reviews, no hidden charges, no false promises. What you see is what you get.</p>
+      <p><strong>Quality:</strong> We personally verify every supplier and product before listing. Your trust is earned through quality.</p>
+      <p><strong>Customer First:</strong> Your satisfaction drives every decision we make. From packaging to post-delivery support, we care.</p>
+      <p><strong>Community:</strong> We're not just a store—we're part of the Depalpur community. Your success is our success.</p>
+
+      <div class="cta-box">
+        <h3>Ready to Shop with Confidence?</h3>
+        <p>Join 5000+ happy customers who trust Haider Commercial Traders for their home needs</p>
+        <a href="index.html" class="cta-btn">Browse Our Products →</a>
+      </div>
+
+      <div class="footer-note">
+        <p><strong>Haider Commercial Traders</strong><br>Dharma, Depalpur, Punjab, Pakistan</p>
+        <p style="margin-top: 15px; font-size: 13px;">© 2026 Haider Commercial Traders. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
