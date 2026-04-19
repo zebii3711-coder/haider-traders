@@ -3,19 +3,595 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms & Conditions - Haider Traders</title>
+  <meta name="description" content="Terms & Conditions for Haider Commercial Traders - Read our terms of service, return policy, and shipping information.">
+  <title>Terms & Conditions | Haider Commercial Traders</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📜</text></svg>">
+  <style>
+    :root {
+      --primary: #27ae60;
+      --primary-dark: #1e8449;
+      --secondary: #2c3e50;
+      --bg-light: #f8f9fa;
+      --text: #2d3436;
+      --text-light: #636e72;
+      --border: #dfe6e9;
+      --shadow: 0 2px 15px rgba(0,0,0,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: var(--text); 
+      line-height: 1.8;
+      padding: 20px 10px;
+      min-height: 100vh;
+    }
+    
+    .wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .header-bar {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 12px 12px 0 0;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    
+    .logo span { color: var(--primary); }
+    
+    .back-btn {
+      background: var(--primary);
+      color: white;
+      padding: 10px 22px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+    }
+    
+    .container { 
+      background: white; 
+      padding: 50px 40px; 
+      border-radius: 0 0 12px 12px;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+    }
+    
+    h1 { 
+      color: var(--secondary); 
+      font-size: 38px; 
+      margin-bottom: 15px; 
+      font-weight: 700;
+    }
+    
+    .divider {
+      height: 4px;
+      width: 80px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 2px;
+      margin-bottom: 25px;
+    }
+    
+    .meta-box {
+      background: var(--bg-light);
+      padding: 20px 25px;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+      margin: 25px 0 35px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    
+    .meta-item {
+      font-size: 14px;
+    }
+    
+    .meta-item strong {
+      color: var(--secondary);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .toc {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 10px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+    
+    .toc h3 {
+      color: var(--secondary);
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    
+    .toc ul {
+      list-style: none;
+      columns: 2;
+      gap: 20px;
+    }
+    
+    .toc li {
+      margin: 8px 0;
+      font-size: 14px;
+    }
+    
+    .toc a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    
+    .toc a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+    
+    h2 { 
+      color: var(--secondary); 
+      font-size: 26px; 
+      margin: 45px 0 20px 0; 
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+      scroll-margin-top: 20px;
+    }
+    
+    h3 {
+      color: var(--secondary);
+      font-size: 19px;
+      margin: 25px 0 12px 0;
+      font-weight: 600;
+    }
+    
+    p { 
+      margin: 15px 0; 
+      font-size: 15.5px; 
+      color: var(--text-light);
+    }
+    
+    ul, ol { 
+      margin: 18px 0 18px 30px; 
+      color: var(--text-light);
+    }
+    
+    li { 
+      margin: 10px 0; 
+      font-size: 15px;
+    }
+    
+    .highlight-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 18px 22px;
+      border-radius: 8px;
+      margin: 25px 0;
+    }
+    
+    .highlight-box strong {
+      color: #92400e;
+    }
+    
+    .warning-box {
+      background: #fef2f2;
+      border-left: 4px solid #dc2626;
+      padding: 18px 22px;
+      border-radius: 8px;
+      margin: 25px 0;
+    }
+    
+    .warning-box strong {
+      color: #991b1b;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    
+    table th {
+      background: var(--bg-light);
+      color: var(--secondary);
+      padding: 12px;
+      text-align: left;
+      border: 1px solid var(--border);
+      font-weight: 600;
+    }
+    
+    table td {
+      padding: 12px;
+      border: 1px solid var(--border);
+      color: var(--text-light);
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+    
+    .contact-card {
+      background: var(--bg-light);
+      padding: 22px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    
+    .contact-card h4 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    
+    .contact-card p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+    
+    a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    .footer-note {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--text-light);
+      font-size: 14px;
+      border-top: 2px solid var(--border);
+      margin-top: 40px;
+    }
+    
+    @media (max-width: 768px) {
+      .container { padding: 30px 20px; }
+      h1 { font-size: 30px; }
+      h2 { font-size: 22px; }
+      .toc ul { columns: 1; }
+      .header-bar { padding: 15px 20px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Terms & Conditions</h1>
-  <p><strong>Last updated:</strong> April 17, 2026</p>
-  <h2>1. Agreement</h2>
-  <p>By accessing haider-traders.com, you agree to these terms. Haider Traders deals in commercial professional items including laptops, musical instruments, and related equipment.</p>
-  <h2>2. Products</h2>
-  <p>All product descriptions and prices are subject to change without notice. We reserve the right to modify or discontinue products.</p>
-  <h2>3. Orders</h2>
-  <p>Placing an order constitutes an offer to purchase. All orders are subject to availability and confirmation.</p>
-  <h2>Contact</h2>
-  <p>Questions? Email: info@haider-traders.com</p>
-  <p><a href="index.html">← Back to Home</a></p>
+  <div class="wrapper">
+    <div class="header-bar">
+      <div class="logo">Haider <span>Commercial</span> Traders</div>
+      <a href="index.html" class="back-btn">← Back to Store</a>
+    </div>
+    
+    <div class="container">
+      <h1>Terms & Conditions</h1>
+      <div class="divider"></div>
+      
+      <div class="meta-box">
+        <div class="meta-item">
+          <strong>Last Updated</strong>
+          April 19, 2026
+        </div>
+        <div class="meta-item">
+          <strong>Effective Date</strong>
+          April 19, 2026
+        </div>
+        <div class="meta-item">
+          <strong>Version</strong>
+          2.1
+        </div>
+        <div class="meta-item">
+          <strong>Jurisdiction</strong>
+          Pakistan
+        </div>
+      </div>
+
+      <p>Welcome to <strong>Haider Commercial Traders</strong>. By accessing our website and placing an order, you agree to be bound by these Terms & Conditions. Please read them carefully before making a purchase.</p>
+
+      <div class="highlight-box">
+        <strong>Quick Summary:</strong> Order place karne ka matlab hai aap hamari terms se agree karte hain. 7 din ki return policy hai. COD available hai. Koi issue ho to WhatsApp pe contact karein.
+      </div>
+
+      <div class="toc">
+        <h3>Table of Contents</h3>
+        <ul>
+          <li><a href="#section1">1. Acceptance of Terms</a></li>
+          <li><a href="#section2">2. Products & Pricing</a></li>
+          <li><a href="#section3">3. Order Placement</a></li>
+          <li><a href="#section4">4. Payment Terms</a></li>
+          <li><a href="#section5">5. Shipping & Delivery</a></li>
+          <li><a href="#section6">6. Returns & Refunds</a></li>
+          <li><a href="#section7">7. Warranty Policy</a></li>
+          <li><a href="#section8">8. User Accounts</a></li>
+          <li><a href="#section9">9. Prohibited Activities</a></li>
+          <li><a href="#section10">10. Limitation of Liability</a></li>
+          <li><a href="#section11">11. Contact Information</a></li>
+        </ul>
+      </div>
+
+      <h2 id="section1">1. Acceptance of Terms</h2>
+      <p>By accessing and using the Haider Commercial Traders website, you acknowledge that you have read, understood, and agree to be bound by these Terms & Conditions. If you do not agree with any part of these terms, please do not use our website or services.</p>
+      <p>We reserve the right to update or modify these terms at any time without prior notice. Continued use of the website after changes constitutes acceptance of the revised terms.</p>
+
+      <h2 id="section2">2. Products & Pricing</h2>
+      
+      <h3>2.1 Product Information</h3>
+      <ul>
+        <li>We strive to display product images, descriptions, and specifications as accurately as possible. However, colors may vary slightly due to monitor settings.</li>
+        <li>All products are 100% genuine and sourced from authorized dealers.</li>
+        <li>Product availability is subject to stock. If an item is out of stock after order placement, we will notify you and offer a full refund or alternative product.</li>
+      </ul>
+      
+      <h3>2.2 Pricing Policy</h3>
+      <table>
+        <tr>
+          <th>Aspect</th>
+          <th>Policy</th>
+        </tr>
+        <tr>
+          <td>Displayed Prices</td>
+          <td>All prices are in Pakistani Rupees (PKR) and include applicable taxes</td>
+        </tr>
+        <tr>
+          <td>Price Changes</td>
+          <td>We reserve the right to change prices at any time. Order confirmed at checkout price</td>
+        </tr>
+        <tr>
+          <td>Hidden Charges</td>
+          <td>No hidden charges. Shipping cost shown clearly at checkout</td>
+        </tr>
+        <tr>
+          <td>Price Matching</td>
+          <td>Found a lower price elsewhere? Contact us. We may match genuine competitor prices</td>
+        </tr>
+      </table>
+
+      <div class="warning-box">
+        <strong>Important:</strong> Prices and availability are subject to change without notice. We are not responsible for typographical errors in pricing or product information.
+      </div>
+
+      <h2 id="section3">3. Order Placement</h2>
+      
+      <h3>3.1 How to Order</h3>
+      <ol>
+        <li>Browse products and add items to cart</li>
+        <li>Proceed to checkout and fill shipping details accurately</li>
+        <li>Select payment method: Cash on Delivery or Advance Payment</li>
+        <li>Review order summary and confirm</li>
+        <li>Receive order confirmation via WhatsApp/email within 24 hours</li>
+      </ol>
+      
+      <h3>3.2 Order Confirmation</h3>
+      <p>Your order is confirmed only after you receive a confirmation message from us via WhatsApp or email. We reserve the right to cancel any order due to stock unavailability, pricing errors, or suspected fraudulent activity.</p>
+      
+      <h3>3.3 Order Cancellation</h3>
+      <ul>
+        <li><strong>By Customer:</strong> You can cancel within 2 hours of order placement by contacting us on WhatsApp</li>
+        <li><strong>By Us:</strong> We may cancel orders if payment fails, address is unverified, or product is unavailable</li>
+        <li>Cancelled orders with advance payment will be refunded within 7-10 business days</li>
+      </ul>
+
+      <h2 id="section4">4. Payment Terms</h2>
+      
+      <h3>4.1 Accepted Payment Methods</h3>
+      <table>
+        <tr>
+          <th>Method</th>
+          <th>Details</th>
+          <th>Charges</th>
+        </tr>
+        <tr>
+          <td>Cash on Delivery (COD)</td>
+          <td>Pay cash to courier at delivery time</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>Easypaisa</td>
+          <td>Send to 0347-1881297. Share screenshot</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>JazzCash</td>
+          <td>Send to 0347-1881297. Share screenshot</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>Bank Transfer</td>
+          <td>Account details provided on request</td>
+          <td>Free</td>
+        </tr>
+      </table>
+      
+      <h3>4.2 Payment Verification</h3>
+      <p>For advance payments, orders are processed only after payment verification. Please send clear screenshot of transaction with transaction ID. Fake screenshots will result in order cancellation and account ban.</p>
+
+      <h2 id="section5">5. Shipping & Delivery</h2>
+      
+      <h3>5.1 Delivery Timeline</h3>
+      <table>
+        <tr>
+          <th>Location</th>
+          <th>Estimated Time</th>
+          <th>Shipping Cost</th>
+        </tr>
+        <tr>
+          <td>Punjab Major Cities</td>
+          <td>2-4 business days</td>
+          <td>Rs. 200-300</td>
+        </tr>
+        <tr>
+          <td>Other Provinces</td>
+          <td>4-7 business days</td>
+          <td>Rs. 300-500</td>
+        </tr>
+        <tr>
+          <td>Remote Areas</td>
+          <td>7-10 business days</td>
+          <td>Rs. 500-700</td>
+        </tr>
+      </table>
+      
+      <h3>5.2 Delivery Terms</h3>
+      <ul>
+        <li>Delivery times are estimates and may vary due to weather, holidays, or courier delays</li>
+        <li>We use TCS, Leopards, and Call Courier for shipping</li>
+        <li>Please provide accurate address and active phone number. Failed delivery due to wrong info will incur re-delivery charges</li>
+        <li>Inspect package before accepting. For damaged items, refuse delivery and contact us immediately</li>
+        <li>Risk of loss transfers to you upon delivery</li>
+      </ul>
+
+      <h2 id="section6">6. Returns & Refunds Policy</h2>
+      
+      <h3>6.1 Return Eligibility</h3>
+      <p>We offer a <strong>7-day return policy</strong> from the date of delivery. To be eligible:</p>
+      <ul>
+        <li>Product must be unused, in original packaging with all accessories</li>
+        <li>Original invoice/receipt must be provided</li>
+        <li>Product must not be damaged by customer</li>
+        <li>Return request must be initiated within 7 days via WhatsApp</li>
+      </ul>
+      
+      <h3>6.2 Non-Returnable Items</h3>
+      <ul>
+        <li>Products damaged due to misuse or negligence</li>
+        <li>Items without original packaging or accessories</li>
+        <li>Custom or personalized products</li>
+        <li>Products purchased on sale/clearance (unless defective)</li>
+      </ul>
+      
+      <h3>6.3 Refund Process</h3>
+      <table>
+        <tr>
+          <th>Payment Method</th>
+          <th>Refund Method</th>
+          <th>Timeline</th>
+        </tr>
+        <tr>
+          <td>Cash on Delivery</td>
+          <td>Bank transfer or Easypaisa/JazzCash</td>
+          <td>7-10 business days after we receive item</td>
+        </tr>
+        <tr>
+          <td>Advance Payment</td>
+          <td>Same method used for payment</td>
+          <td>7-10 business days after we receive item</td>
+        </tr>
+      </table>
+      
+      <div class="highlight-box">
+        <strong>Note:</strong> Return shipping cost is borne by customer unless product is defective or wrong item was sent. Refund amount = Product price only. Shipping charges are non-refundable.
+      </div>
+
+      <h2 id="section7">7. Warranty Policy</h2>
+      <p>All products come with manufacturer warranty as specified on product page. Warranty claims must be made through us with:</p>
+      <ul>
+        <li>Original invoice</li>
+        <li>Warranty card (if provided)</li>
+        <li>Clear photos/videos of the defect</li>
+      </ul>
+      <p><strong>Warranty does not cover:</strong> Physical damage, water damage, unauthorized repairs, or normal wear and tear.</p>
+
+      <h2 id="section8">8. User Accounts</h2>
+      
+      <h3>8.1 Account Responsibility</h3>
+      <ul>
+        <li>You are responsible for maintaining confidentiality of your account password</li>
+        <li>You agree to notify us immediately of any unauthorized use of your account</li>
+        <li>One person, one account. Multiple accounts may be terminated</li>
+      </ul>
+      
+      <h3>8.2 Account Termination</h3>
+      <p>We reserve the right to suspend or terminate accounts for violation of terms, fraudulent activity, or abuse of our services.</p>
+
+      <h2 id="section9">9. Prohibited Activities</h2>
+      <p>You agree NOT to:</p>
+      <ul>
+        <li>Use the website for any illegal purpose or violate any laws</li>
+        <li>Submit false or misleading information</li>
+        <li>Attempt to gain unauthorized access to our systems</li>
+        <li>Post fake reviews or manipulate ratings</li>
+        <li>Resell products purchased from us without permission</li>
+        <li>Use automated systems to access the website (bots, scrapers)</li>
+      </ul>
+
+      <h2 id="section10">10. Limitation of Liability</h2>
+      <p>Haider Commercial Traders shall not be liable for any indirect, incidental, special, or consequential damages arising from:</p>
+      <ul>
+        <li>Use or inability to use our products or services</li>
+        <li>Delays or failures in delivery by courier partners</li>
+        <li>Errors in product descriptions or pricing</li>
+        <li>Unauthorized access to your account</li>
+      </ul>
+      <p>Our total liability shall not exceed the amount paid by you for the specific product in question.</p>
+
+      <div class="warning-box">
+        <strong>Disclaimer:</strong> Products are sold "as is". We make no warranties beyond those provided by manufacturers. Use products according to instruction manuals.
+      </div>
+
+      <h2 id="section11">11. Governing Law & Dispute Resolution</h2>
+      <p>These Terms & Conditions are governed by the laws of Pakistan. Any disputes shall be subject to the exclusive jurisdiction of courts in Depalpur, Punjab.</p>
+      <p><strong>Dispute Process:</strong></p>
+      <ol>
+        <li>Contact us first via WhatsApp: +92 347 1881297</li>
+        <li>We will attempt to resolve within 7 business days</li>
+        <li>If unresolved, matter may be taken to consumer court</li>
+      </ol>
+
+      <h2>Contact Information</h2>
+      <p>For questions about these Terms & Conditions, contact us:</p>
+      
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h4>Business Address</h4>
+          <p><strong>Haider Commercial Traders</strong></p>
+          <p>Dharma, Depalpur</p>
+          <p>Punjab, Pakistan</p>
+        </div>
+        
+        <div class="contact-card">
+          <h4>Customer Support</h4>
+          <p><strong>WhatsApp:</strong> <a href="https://wa.me/923471881297">+92 347 1881297</a></p>
+          <p><strong>Email:</strong> <a href="mailto:haidercommercialtraders@gmail.com">haidercommercialtraders@gmail.com</a></p>
+          <p><strong>Hours:</strong> Mon-Fri, 9:00 AM - 5:00 PM</p>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        <p>By placing an order with Haider Commercial Traders, you acknowledge that you have read, understood, and agree to these Terms & Conditions.</p>
+        <p style="margin-top: 15px; font-size: 13px;">© 2026 Haider Commercial Traders. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
