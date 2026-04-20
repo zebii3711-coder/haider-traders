@@ -97,30 +97,89 @@
       display: block; text-decoration: none;
     }
     .btn-secondary:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
-    .btn-green {
-      width: 100%; padding: 14px;
-      background: linear-gradient(135deg, var(--green), var(--green-dark));
-      color: white; border: none; border-radius: 5px;
-      font-size: 14px; font-weight: 700; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; transition: 0.3s;
-      text-decoration: none; display: block; text-align: center; margin-top: 16px;
+
+    /* EASYPAISA HEADER */
+    .ep-header-row {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--dark4); border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px 16px; margin-bottom: 16px;
     }
-    .btn-green:hover { opacity: 0.9; }
+    .ep-logo-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+    .ep-logo {
+      font-size: 20px; font-weight: 900; font-style: italic;
+      background: linear-gradient(135deg, #00a651, #00c85a);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .ep-sub { font-size: 10px; font-weight: 700; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
+    .ep-video-btn {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; color: var(--text-dim);
+    }
+    .ep-play {
+      width: 24px; height: 24px; background: #a8d400;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .ep-play svg { width: 10px; height: 10px; fill: #222; }
 
-    /* PAYMENT BOX */
-    .payment-box { background: var(--dark4); border: 1px solid rgba(29,185,84,0.2); border-radius: 6px; padding: 16px; margin: 14px 0; }
-    .payment-box h3 { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 10px; letter-spacing: 0.5px; }
-    .payment-box p { font-size: 13px; color: var(--text-dim); margin: 5px 0; }
-    .payment-box p strong { color: var(--text); }
-    .payment-warn { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 5px; padding: 12px; margin: 12px 0; font-size: 12px; color: var(--gold); }
-    .payment-warn strong { display: block; margin-bottom: 4px; }
+    /* TIMER BAR */
+    .ep-timer-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--dark4); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 16px; margin-bottom: 18px;
+    }
+    .ep-timer-label { font-size: 12px; color: var(--text-dim); font-weight: 600; letter-spacing: 1px; }
+    .ep-timer-count {
+      background: #111; color: #fff; font-size: 15px; font-weight: 700;
+      padding: 5px 14px; border-radius: 20px; letter-spacing: 1px; font-variant-numeric: tabular-nums;
+    }
 
-    /* SUCCESS */
-    .success-icon { font-size: 48px; text-align: center; margin: 10px 0 16px; }
-    .success-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--green); text-align: center; margin-bottom: 8px; }
-    .success-sub { font-size: 13px; color: var(--text-dim); text-align: center; line-height: 1.7; margin: 10px 0; }
-    .countdown { text-align: center; font-size: 12px; color: var(--text-dim); margin: 16px 0; letter-spacing: 0.5px; }
-    .countdown span { color: var(--gold); font-weight: 700; }
+    /* STEPS LIST */
+    .ep-steps { list-style: none; margin: 0 0 10px; padding: 0; }
+    .ep-steps li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: var(--text-dim); padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .ep-steps li:last-child { border-bottom: none; }
+    .ep-step-num {
+      min-width: 20px; height: 20px; border-radius: 50%;
+      background: var(--dark4); border: 1px solid var(--border);
+      font-size: 10px; font-weight: 700; color: var(--gold);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .ep-warn-icon { min-width: 20px; font-size: 14px; margin-top: 1px; }
+
+    /* AMOUNT FIELD */
+    .ep-amount-wrap { position: relative; margin-bottom: 4px; }
+    .ep-amount-wrap input { padding-right: 44px; font-size: 15px; font-weight: 600; }
+    .ep-amount-icon {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      width: 26px; height: 26px; border: 2px solid var(--border);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: var(--text-dim);
+    }
+
+    /* STEP 3 SUCCESS */
+    .ep-success-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 20px 8px 8px; text-align: center;
+    }
+    .ep-clock-icon {
+      width: 60px; height: 60px; background: var(--dark4);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 30px; margin-bottom: 20px; border: 1px solid var(--border);
+    }
+    .ep-success-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700; color: var(--green); margin-bottom: 10px;
+    }
+    .ep-success-sub { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+    .ep-back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--gold); font-size: 13px; font-weight: 600;
+      text-decoration: none; margin-top: 20px; cursor: pointer; transition: opacity 0.2s;
+    }
+    .ep-back-link:hover { opacity: 0.7; }
 
     /* SCREENSHOT PREVIEW */
     #preview { max-width: 100%; margin-top: 10px; border-radius: 6px; display: none; border: 1px solid var(--border); }
@@ -154,7 +213,7 @@
     <div class="step-dot" id="dot3">3</div>
   </div>
 
-  <!-- STEP 1 -->
+  <!-- STEP 1: ORDER DETAILS -->
   <div class="box active" id="step1">
     <p class="step-label">Step 1 of 3 — Order Details</p>
 
@@ -173,7 +232,7 @@
       <label>Full Name</label>
       <input type="text" name="Name" placeholder="Enter your full name" required>
 
-      <label>WhatsApp Number</label>
+      <label>Phone Number</label>
       <input type="tel" name="Phone" placeholder="03XX-XXXXXXX" required>
 
       <label>Email Address</label>
@@ -190,29 +249,34 @@
       <label>Delivery Address</label>
       <textarea name="Address" rows="3" required placeholder="House#, Street, City"></textarea>
 
-      <button type="submit" class="btn-primary">Continue to Payment →</button>
+      <button type="submit" class="btn-primary">Next →</button>
     </form>
   </div>
 
-  <!-- STEP 2 -->
+  <!-- STEP 2: EASYPAISA PAYMENT -->
   <div class="box" id="step2">
     <p class="step-label">Step 2 of 3 — Payment</p>
-    <h1>Send Payment</h1>
 
-    <div class="payment-box">
-      <h3>✅ Easypaisa Account</h3>
-      <p><strong>Number:</strong> 03471881297</p>
-      <p><strong>Account Name:</strong> Ali Haider</p>
+    <div class="ep-header-row">
+      <div class="ep-logo-wrap">
+        <span class="ep-logo">easypaisa</span>
+        <span class="ep-sub">Easypaisa Fast</span>
+      </div>
+      <div class="ep-video-btn">
+        <div class="ep-play">
+          <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
+        </div>
+        How to make a deposit?
+      </div>
     </div>
 
-    <div class="payment-warn">
-      <strong>⚠️ Important</strong>
-      Enter the correct Transaction ID after sending payment. Wrong TRX ID will cancel your order.
+    <div class="ep-timer-bar">
+      <span class="ep-timer-label">Payment</span>
+      <span class="ep-timer-count" id="ep-timer-display">20:00</span>
+      <span style="font-size:12px;color:var(--text-dim);">Time left</span>
     </div>
 
     <form id="paymentForm">
-      <h2>Payment Confirmation</h2>
-
       <input type="hidden" id="f-product">
       <input type="hidden" id="f-price">
       <input type="hidden" id="f-qty">
@@ -222,40 +286,76 @@
       <input type="hidden" id="f-email">
       <input type="hidden" id="f-address">
 
-      <label>Your Name</label>
-      <input type="text" id="confirm-name" readonly>
+      <ul class="ep-steps">
+        <li>
+          <span class="ep-step-num">1</span>
+          <span>Enter the amount and your phone number, and then click Pay</span>
+        </li>
+      </ul>
 
-      <label>WhatsApp Number</label>
-      <input type="tel" id="confirm-phone" readonly>
+      <label>Amount</label>
+      <div class="ep-amount-wrap">
+        <input type="number" id="confirm-amount" min="0" max="100000" placeholder="0 — 100,000 PKR" required>
+        <div class="ep-amount-icon">₨</div>
+      </div>
 
-      <label>Paid To</label>
-      <input type="text" value="03471881297 — Ali Haider (Easypaisa)" readonly>
+      <ul class="ep-steps" style="margin-top:14px;">
+        <li>
+          <span class="ep-step-num">2</span>
+          <span>Enter your Easypaisa account number, click Pay</span>
+        </li>
+      </ul>
+
+      <label>Account Number</label>
+      <input type="tel" id="confirm-phone-ep" placeholder="03XX-XXXXXXX" required>
+
+      <ul class="ep-steps" style="margin-top:14px;">
+        <li>
+          <span class="ep-warn-icon">⚠️</span>
+          <span>If you are Telenor user, just wait for the notification and enter your PIN to confirm the payment</span>
+        </li>
+        <li>
+          <span class="ep-step-num">3</span>
+          <span>Open the Easypaisa app and sign in, or wait for the notification to be sent and open the app through it</span>
+        </li>
+        <li>
+          <span class="ep-step-num">4</span>
+          <span>Go to "Payment Requests" and confirm the payment request</span>
+        </li>
+        <li>
+          <span class="ep-warn-icon">⚠️</span>
+          <span>Attention! After three failed attempts, you have to switch the account to make a deposit</span>
+        </li>
+      </ul>
 
       <label>Transaction ID (TRX)</label>
       <input type="text" id="f-trx" placeholder="Paste TRX ID here" required>
-
-      <label>Amount Sent (Rs)</label>
-      <input type="number" id="confirm-amount" placeholder="0" required>
 
       <label>Payment Screenshot (Recommended)</label>
       <input type="file" id="screenshot" accept="image/*">
       <img id="preview" alt="Screenshot Preview">
 
-      <button type="submit" class="btn-primary">Submit Order ✓</button>
+      <button type="submit" class="btn-primary">Pay</button>
     </form>
     <button onclick="showStep(1)" class="btn-secondary">← Go Back</button>
   </div>
 
-  <!-- STEP 3 -->
+  <!-- STEP 3: PAYMENT SUCCESS -->
   <div class="box" id="step3">
     <p class="step-label">Step 3 of 3 — Confirmed</p>
-    <div class="success-icon">✅</div>
-    <div class="success-title">Order Submitted!</div>
-    <p class="success-sub">Your payment is received. We will verify your Transaction ID with Easypaisa and confirm your order within <strong>30 minutes.</strong></p>
-    <p class="success-sub">Please check your email for confirmation.</p>
-    <div class="countdown">Redirecting in <span id="timer">15</span> seconds...</div>
-    <a href="index.html" class="btn-green">← Back to Shop</a>
-    <p style="text-align:center; margin-top:20px; font-size:12px; color:var(--text-dim);">Need help? WhatsApp: <strong style="color:var(--gold);">03471881297</strong></p>
+
+    <div class="ep-timer-bar">
+      <span class="ep-timer-label">Status</span>
+      <span class="ep-timer-count" id="ep-timer2-display">01:00</span>
+      <span style="font-size:12px;color:var(--text-dim);">Time left</span>
+    </div>
+
+    <div class="ep-success-wrap">
+      <div class="ep-clock-icon">✅</div>
+      <div class="ep-success-title">Payment Successfully</div>
+      <p class="ep-success-sub">Your payment has been received and confirmed.<br>We will process your order shortly.</p>
+      <a class="ep-back-link" href="index.html">‹ Back to merchant store</a>
+    </div>
   </div>
 
 </div>
@@ -269,6 +369,40 @@ const price = params.get('price') || '0';
 const img = params.get('img') || '';
 const success = params.get('success');
 
+let step2Timer = null;
+let step2Seconds = 20 * 60;
+let step3Timer = null;
+let step3Seconds = 60;
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function startStep2Timer() {
+  clearInterval(step2Timer);
+  step2Seconds = 20 * 60;
+  const el = document.getElementById('ep-timer-display');
+  step2Timer = setInterval(() => {
+    if (step2Seconds <= 0) { clearInterval(step2Timer); el.textContent = '00:00'; return; }
+    step2Seconds--;
+    el.textContent = pad(Math.floor(step2Seconds / 60)) + ':' + pad(step2Seconds % 60);
+  }, 1000);
+}
+
+function startStep3Timer() {
+  clearInterval(step3Timer);
+  step3Seconds = 60;
+  const el = document.getElementById('ep-timer2-display');
+  step3Timer = setInterval(() => {
+    if (step3Seconds <= 0) {
+      clearInterval(step3Timer);
+      el.textContent = '00:00';
+      window.location.href = 'index.html';
+      return;
+    }
+    step3Seconds--;
+    el.textContent = pad(Math.floor(step3Seconds / 60)) + ':' + pad(step3Seconds % 60);
+  }, 1000);
+}
+
 function showStep(num) {
   [1,2,3].forEach(n => {
     document.getElementById('step'+n).classList.remove('active');
@@ -278,20 +412,15 @@ function showStep(num) {
   });
   document.getElementById('step'+num).classList.add('active');
   document.getElementById('dot'+num).classList.add('active');
-  if (document.getElementById('line1')) document.getElementById('line1').style.background = num > 1 ? 'var(--gold)' : 'var(--border)';
-  if (document.getElementById('line2')) document.getElementById('line2').style.background = num > 2 ? 'var(--gold)' : 'var(--border)';
+  document.getElementById('line1').style.background = num > 1 ? 'var(--gold)' : 'var(--border)';
+  document.getElementById('line2').style.background = num > 2 ? 'var(--gold)' : 'var(--border)';
   window.scrollTo(0,0);
+  if (num === 2) startStep2Timer();
+  if (num === 3) startStep3Timer();
 }
 
 if (success === 'true') {
   showStep(3);
-  let timeLeft = 15;
-  const timerEl = document.getElementById('timer');
-  const cd = setInterval(() => {
-    timeLeft--;
-    timerEl.textContent = timeLeft;
-    if (timeLeft <= 0) { clearInterval(cd); window.location.href = 'index.html'; }
-  }, 1000);
 } else {
   document.getElementById('p-name').innerText = name;
   document.getElementById('p-price').innerText = 'Rs ' + Number(price).toLocaleString();
@@ -308,9 +437,9 @@ document.getElementById('screenshot').addEventListener('change', function(e) {
   const file = e.target.files[0];
   if (file) {
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function(ev) {
       const preview = document.getElementById('preview');
-      preview.src = e.target.result;
+      preview.src = ev.target.result;
       preview.style.display = 'block';
     }
     reader.readAsDataURL(file);
@@ -328,9 +457,8 @@ document.getElementById('customerForm').addEventListener('submit', function(e) {
   document.getElementById('f-phone').value = fd.get('Phone');
   document.getElementById('f-email').value = fd.get('Email');
   document.getElementById('f-address').value = fd.get('Address');
-  document.getElementById('confirm-name').value = fd.get('Name');
-  document.getElementById('confirm-phone').value = fd.get('Phone');
   document.getElementById('confirm-amount').value = fd.get('Price') * fd.get('Quantity');
+  document.getElementById('confirm-phone-ep').value = fd.get('Phone');
   showStep(2);
 });
 
@@ -355,17 +483,17 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
       screenshot: screenshotBase64 || ''
     };
     fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) })
-      .then(() => { window.location.href = 'order.html?success=true'; })
+      .then(() => { showStep(3); })
       .catch(() => {
         alert('Error submitting. Please contact WhatsApp: 03471881297');
-        btn.textContent = 'Submit Order ✓';
+        btn.textContent = 'Pay';
         btn.disabled = false;
       });
   }
 
   if (screenshotFile) {
     const reader = new FileReader();
-    reader.onload = function(e) { sendData(e.target.result); }
+    reader.onload = function(ev) { sendData(ev.target.result); }
     reader.readAsDataURL(screenshotFile);
   } else { sendData(''); }
 });
